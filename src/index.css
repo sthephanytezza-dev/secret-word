@@ -9,3 +9,20 @@ body{
   background-color: #f0e6ef;
   color: #6A4C93;
 }
+
+button{
+  background-color: #FFCA3A;
+  padding: 0 45px;
+  border: 2px solid #000;
+  border-radius: 25px;
+  height: 50px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: .4s;
+}
+
+button:hover{
+  background-color: #e1b231;
+}

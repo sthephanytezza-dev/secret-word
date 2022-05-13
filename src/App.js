@@ -1,9 +1,13 @@
 import "./App.css";
 
+import StarScreen from "./components/StartScreen";
+
 function App() {
-  return <div className="App">
-    <h2>Secret Word</h2>
-  </div>;
+  return (
+    <div className="App">
+      <StarScreen />
+    </div>
+  );
 }
 
 export default App;
