@@ -27,7 +27,7 @@ function App() {
   const [letters, setLetters] = useState([]);
 
   const [guessedLetters, setGuessedLetters] = useState([]);
-  const [wrongLetters, setWrogLetters] = useState([]);
+  const [wrongLetters, setWrongLetters] = useState([]);
   const [guesses, setGuesses] = useState(5);
   const [score, setScore] = useState(0);
 
@@ -66,7 +66,28 @@ function App() {
 
   //process the letter input
   const verifyLetter = (letter) => {
-    console.log(letter);
+    const normalizedLetter = letter.toLowerCase();
+
+    //verifica se a letra já foi utilizada
+    if (
+      guessedLetters.includes(normalizedLetter) ||
+      wrongLetters.includes(normalizedLetter)
+    ) {
+      return;
+    }
+
+    //incluir letras digitadas em erradas ou acertadas
+    if (letters.includes(normalizedLetter)) {
+      setGuessedLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters,
+        normalizedLetter,
+      ]);
+    } else {
+      setWrongLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters,
+        normalizedLetter,
+      ]);
+    }
   };
 
   //restarts the game
