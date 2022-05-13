@@ -31,6 +31,8 @@ function App() {
   const [guesses, setGuesses] = useState(5);
   const [score, setScore] = useState(0);
 
+  const guessesQty = 5;
+
   const pickWordAndCategory = () => {
     //pick a random category
     const categories = Object.keys(words);
@@ -87,11 +89,29 @@ function App() {
         ...actualGuessedLetters,
         normalizedLetter,
       ]);
+      setGuesses((actualGuesses) => actualGuesses - 1);
     }
   };
 
+  const clearLettersStates = () => {
+    setGuessedLetters([]);
+    setWrongLetters([]);
+  };
+
+  useEffect(() => {
+    if (guesses <= 0) {
+      //resetar os estados
+      clearLettersStates();
+
+      setGameStage(stages[2].name);
+    }
+  }, [guesses]);
+
   //restarts the game
   const retry = () => {
+    setScore(0);
+    setGuesses(guessesQty);
+
     setGameStage(stages[0].name);
   };
 
